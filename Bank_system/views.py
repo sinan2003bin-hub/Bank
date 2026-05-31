@@ -1,3 +1,5 @@
+from urllib import request
+
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
@@ -31,7 +33,20 @@ def signup(request):
 
         username = request.POST["username"]
         email = request.POST["email"]
+
         password = request.POST["password"]
+        confirm_password = request.POST["confirm_password"]
+
+        if password != confirm_password:
+
+            return render(
+                request,
+                "signup.html",
+                {
+                    "error":
+                    "Passwords do not match"
+                }
+            )
 
         User.objects.create_user(
             username=username,
@@ -41,7 +56,10 @@ def signup(request):
 
         return redirect("home")
 
-    return render(request,"signup.html")
+    return render(
+        request,
+        "signup.html"
+    )
 
 @login_required
 def dashboard(request):
