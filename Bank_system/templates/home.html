@@ -1,0 +1,62 @@
+<style>
+    div {
+        background-color: rgb(236, 255, 249);
+        padding: 5px 20px;
+        border-radius: 10px;
+        width: 70%;
+        margin: auto;
+        text-align: center;
+    }
+    p{
+        color: red;
+    }
+    .submit{
+        background-color: green;
+        color:aliceblue;
+        border-color:green;
+        width: 20%;
+    }
+    .submit a{
+            color:aliceblue;
+            text-decoration: none;
+        }
+</style>
+
+<div>
+    <h1><center>Mini Bank System</center></h1>
+<h3><center>Login</center></h3>
+
+<form method="POST" >
+    {% csrf_token %}
+    <label>Username:</label>
+    <input type="text" name="username" placeholder="Enter your name" required><br><br>
+    <label>Password:</label>
+    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+    <button type="button" onclick="togglePassword()">👁</button>
+
+    <h6>Don't have an account? <a href="{% url 'signup' %}">Create one</a></h6>
+
+    <button type="submit" class="submit">Login</button>
+
+</form>
+
+    {% if error %}
+    <p>{{ error }}</p>
+    {% endif %}
+
+<script>
+
+function togglePassword() {
+
+    let password =
+        document.getElementById("password");
+
+    if (password.type ==="password")
+
+        { password.type ="text";}
+
+    else {password.type ="password";}
+}
+
+</script>
+</div>

@@ -1,0 +1,20 @@
+<h1>Mini Bank Dashboard 😼</h1>
+
+<h3>
+    Welcome,
+    {{ request.user.username }}
+</h3>
+
+<form method="post">
+    {% csrf_token %}
+<p>Balance: 0 tk</p>
+
+<button>Deposit</button>
+
+<button>Withdraw</button>
+
+<button>Check Balance</button>
+
+<button>History</button>
+
+</form>
