@@ -37,7 +37,7 @@
 
 <div>
     <h1><center>Mini Bank System</center></h1>
-<h3><center>Login</center></h3>
+    <h3><center>Login</center></h3>
 
 <form method="POST" >
     {% csrf_token %}
@@ -47,15 +47,16 @@
     <input type="password" id="password" name="password" placeholder="Enter your password" required>
     <button type="button" onclick="togglePassword()">👁</button>
 
+    {% if error %}
+    <p>{{ error }}</p>
+    {% endif %}
+
+
     <h6>Don't have an account? <a href="{% url 'signup' %}">Create one</a></h6>
 
     <button type="submit" class="submit">Login</button>
 
 </form>
-
-    {% if error %}
-    <p>{{ error }}</p>
-    {% endif %}
 
 <script>
 
