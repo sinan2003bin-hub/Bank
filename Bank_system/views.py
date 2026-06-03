@@ -5,6 +5,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 def home(request):
 
@@ -62,4 +63,10 @@ def signup(request):
 @login_required
 def dashboard(request):
     return render(request,"dashboard.html")
+
+def logout_page(request):
+
+    logout(request)
+
+    return redirect("home")
 
